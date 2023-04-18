@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { useState, useEffect } from 'react';
 import { IoMoon, IoMoonOutline } from 'react-icons/io5';
 import { Container } from './Container';
+import { Link } from 'react-router-dom';
 
 const Wrapper = styled.div`
   display: felx;
@@ -13,8 +14,8 @@ const HeaderEl = styled.header`
   box-shadow: var(--shadow);
   background-color: var(--color-ui-base);
 `;
-const Title = styled.a.attrs({
-  href: '/',
+const Title = styled(Link).attrs({
+  to: '/',
 })`
   color: var(--color-text);
   font-size: var(--fs-sm);
