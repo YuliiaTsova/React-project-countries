@@ -36,7 +36,11 @@ export const Search = ({ search, setSearch }) => {
   return (
     <InputContainer>
       <IoSearch />
-      <Input value={search} onChange={(e) => setSearch(e.target.value)}></Input>
+      <Input
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        aria-label="type the country"
+      ></Input>
     </InputContainer>
   );
 };

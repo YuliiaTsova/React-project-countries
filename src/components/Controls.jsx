@@ -41,6 +41,7 @@ export const Controls = ({ onSearch }) => {
         isSearchable={false}
         value={region}
         onChange={setRegion}
+        aria-label="choose the region"
       />
     </Wrapper>
   );

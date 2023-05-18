@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const Wrapper = styled.article`
+  height: 100%;
   border-radius: var(--radii);
   background-color: var(--color-ua-base);
   box-shadow: var(--shadow);

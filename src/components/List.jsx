@@ -3,6 +3,8 @@ import styled from 'styled-components';
 const Wrapper = styled.section`
   display: grid;
   grid-template-columns: 1fr;
+  grid-auto-rows: auto;
+
   gap: 2rem;
   width: 100%;
   padding: 2rem 0;
@@ -21,5 +23,5 @@ const Wrapper = styled.section`
 `;
 
 export const List = ({ children }) => {
-  return <Wrapper>{children}</Wrapper>;
+  return <Wrapper aria-label="list of countries">{children}</Wrapper>;
 };

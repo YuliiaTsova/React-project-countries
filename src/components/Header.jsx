@@ -46,7 +46,7 @@ export const Header = () => {
       <Container>
         <Wrapper>
           <Title>Where is the world?</Title>
-          <ModeSwitcher onClick={toggleTheme}>
+          <ModeSwitcher onClick={toggleTheme} aria-label="change a theme">
             {theme === 'light' ? <IoMoonOutline size="14px" /> : <IoMoon size="14px" />}
 
             <span style={{ marginLeft: '0.65rem' }}> {theme} theme</span>
