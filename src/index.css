@@ -31,6 +31,7 @@ body[data-theme='dark'] {
   --shadow: rgba(245, 245, 245, 0.2) 0 0 8px;
   --placeholder: rgb(202, 197, 197);
   --controls: #fff;
+  --hover: hsla(208, 23%, 22%, 0.564);
 }
 
 body[data-theme='light'] {
@@ -40,6 +41,7 @@ body[data-theme='light'] {
   --shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
   --placeholder: rgb(138, 133, 133);
   --controls: rgb(138, 133, 133);
+  --hover: hsl(0, 3%, 94%);
 }
 
 body {

@@ -7,6 +7,11 @@ const Wrapper = styled.article`
   box-shadow: var(--shadow);
   cursor: pointer;
   overflow: hidden;
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: translateY(-7px);
+  }
 `;
 
 const CardBody = styled.div`

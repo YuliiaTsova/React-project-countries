@@ -19,7 +19,6 @@ const Wrapper = styled.section`
 const InfoImg = styled.img`
   width: 100%;
   height: 100%;
-
   object-fit: contain;
 
   @media (min-width: 767px) {
@@ -83,8 +82,14 @@ const Borders = styled.span`
   padding: 5px 1rem;
   background-color: var(--color-ui-base);
   box-shadow: var(--shadow);
+  border-radius: var(--radii);
   line-height: 1.5rem;
   cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover {
+    background-color: var(--hover);
+  }
 `;
 
 export const InfoDetail = (props) => {

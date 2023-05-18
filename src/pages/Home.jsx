@@ -6,10 +6,16 @@ import { ALL_COUNTRIES } from '../API/config';
 import { Controls } from '../components/Controls';
 import { List } from '../components/List';
 import { Card } from '../components/Card.jsx';
+import { Button } from '../components/Button';
+import { JumpUp } from '../components/JumpUp';
+import { IoArrowUp } from 'react-icons/io5';
 
 export const Home = ({ countries, setCountries }) => {
   const [filteredCountries, setFilteredCountries] = useState(countries);
   const [errorRequest, setErrorReguest] = useState();
+  const [showItemsEnd, setShowItemsEnd] = useState(12);
+  const [up, setUp] = useState(false);
+
   const handleSearch = (search, region) => {
     let data = [...countries];
     if (region) {
@@ -22,6 +28,7 @@ export const Home = ({ countries, setCountries }) => {
       );
     }
     setFilteredCountries(data);
+    setShowItemsEnd(12);
   };
 
   useEffect(() => {
@@ -39,6 +46,31 @@ export const Home = ({ countries, setCountries }) => {
     }
   }, []);
 
+  const handleShowMore = () => {
+    setShowItemsEnd((prev) => prev + 12);
+  };
+
+  const goUp = () => {
+    window.scrollTo(0, 0);
+    setUp(false);
+  };
+
+  const handleScroll = () => {
+    if (window.pageYOffset > 1000) {
+      setUp(true);
+    } else {
+      setUp(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   if (errorRequest) {
     throw new Error(errorRequest);
   }
@@ -47,7 +79,7 @@ export const Home = ({ countries, setCountries }) => {
     <>
       <Controls onSearch={handleSearch}></Controls>
       <List>
-        {filteredCountries.map((el, i) => {
+        {filteredCountries.slice(0, showItemsEnd).map((el, i) => {
           const details = {
             img: el.flags.png,
             name: el.name.common,
@@ -68,6 +100,22 @@ export const Home = ({ countries, setCountries }) => {
           );
         })}
       </List>
+      <Button
+        onClick={handleShowMore}
+        style={{
+          margin: '0 auto',
+          display: `${filteredCountries.length <= showItemsEnd ? `none` : `block`}`,
+        }}
+      >
+        {' '}
+        Show more
+      </Button>
+      {up && (
+        // {/* {showItemsEnd > 12 && ( */}
+        <JumpUp onClick={goUp}>
+          <IoArrowUp />
+        </JumpUp>
+      )}
     </>
   );
 };

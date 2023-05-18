@@ -12,4 +12,9 @@ export const Button = styled.button`
   gap: 0.75rem;
   color: var(--color-text);
   cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+
+  &:hover {
+    background-color: var(--hover);
+  }
 `;

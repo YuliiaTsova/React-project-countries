@@ -11,9 +11,11 @@ import { Details } from './pages/Details';
 
 function App() {
   const [countries, setCountries] = useState([]);
+
   return (
     <>
       <Header></Header>
+      {console.log('render app')}
       <Main>
         <Routes>
           <Route
