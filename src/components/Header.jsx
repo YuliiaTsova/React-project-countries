@@ -17,6 +17,7 @@ const HeaderEl = styled.header`
 const Title = styled(Link).attrs({
   to: '/',
 })`
+  margin-right: 5px;
   color: var(--color-text);
   font-size: var(--fs-sm);
   font-weight: var(--fw-bold);
@@ -48,7 +49,7 @@ export const Header = () => {
           <ModeSwitcher onClick={toggleTheme}>
             {theme === 'light' ? <IoMoonOutline size="14px" /> : <IoMoon size="14px" />}
 
-            <span style={{ marginLeft: '0.75rem' }}> {theme} theme</span>
+            <span style={{ marginLeft: '0.65rem' }}> {theme} theme</span>
           </ModeSwitcher>
         </Wrapper>
       </Container>

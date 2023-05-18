@@ -9,7 +9,7 @@ import { Card } from '../components/Card.jsx';
 
 export const Home = ({ countries, setCountries }) => {
   const [filteredCountries, setFilteredCountries] = useState(countries);
-
+  const [errorRequest, setErrorReguest] = useState();
   const handleSearch = (search, region) => {
     let data = [...countries];
     if (region) {
@@ -17,28 +17,32 @@ export const Home = ({ countries, setCountries }) => {
     }
 
     if (search) {
-      data = data.filter((c) => c.name.common.toLowerCase().includes(search.toLowerCase()));
-      console.log('DATA search', data);
+      data = data.filter((c) =>
+        c.name.common.toLowerCase().includes(search.toLowerCase())
+      );
     }
-
     setFilteredCountries(data);
   };
-
-  //const history = useNavigate();
 
   useEffect(() => {
     if (!countries.length) {
       axios
         .get(ALL_COUNTRIES)
-        .then(({ data }) => {
-          setCountries(data);
-          setFilteredCountries(data);
+        .then((data) => {
+          setCountries(data.data);
+          setFilteredCountries(data.data);
         })
-        .catch((er) => console.log('My ERROR', er)); //ADD FALLBACK!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        .catch((er) => {
+          console.log(er.message);
+          setErrorReguest(er.message);
+        });
     }
   }, []);
 
-  // console.log(filteredCountries, 'filteredCountries');
+  if (errorRequest) {
+    throw new Error(errorRequest);
+  }
+
   return (
     <>
       <Controls onSearch={handleSearch}></Controls>
@@ -53,9 +57,12 @@ export const Home = ({ countries, setCountries }) => {
               { title: 'Capital', description: el.capital[0] },
             ],
           };
-          // return <Card key={el.name} {...details} onClick={() => history(`/country/${details.name}`)} />;
           return (
-            <Link key={el.name.common} to={`/country/${details.name}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+            <Link
+              key={el.name.common}
+              to={`/country/${details.name}`}
+              style={{ textDecoration: 'none', color: 'inherit' }}
+            >
               <Card {...details} />
             </Link>
           );

@@ -24,18 +24,24 @@ const optionSelect = [
 ];
 
 export const Controls = ({ onSearch }) => {
-  const [search, setSearch] = useState();
+  const [search, setSearch] = useState('');
   const [region, setRegion] = useState();
 
   useEffect(() => {
     const regionValue = region?.value || '';
     onSearch(search, regionValue);
   }, [search, region]);
-  // debugger;
   return (
     <Wrapper>
       <Search search={search} setSearch={setSearch} />
-      <CustomSelect options={optionSelect} placeholder="Filter by Region" isClearable isSearchable={false} value={region} onChange={setRegion} />
+      <CustomSelect
+        options={optionSelect}
+        placeholder="Filter by Region"
+        isClearable
+        isSearchable={false}
+        value={region}
+        onChange={setRegion}
+      />
     </Wrapper>
   );
 };

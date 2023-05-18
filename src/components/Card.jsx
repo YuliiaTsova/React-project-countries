@@ -41,10 +41,9 @@ const CardLisItem = styled.li`
   }
 `;
 
-export const Card = ({ img, name, info = [] /*onClick*/ }) => {
-  //debugger;
+export const Card = ({ img, name, info = [] }) => {
   return (
-    <Wrapper /*onClick={onclick}*/>
+    <Wrapper>
       <CardImg src={img} alt={name} />
       <CardBody>
         <CardTitle>{name}</CardTitle>
