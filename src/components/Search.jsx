@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { IoSearch } from 'react-icons/io5';
+import react from 'react';
 
 const InputContainer = styled.label`
   display: flex;

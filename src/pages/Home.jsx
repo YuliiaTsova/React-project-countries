@@ -14,7 +14,7 @@ export const Home = ({ countries, setCountries }) => {
   const [filteredCountries, setFilteredCountries] = useState(countries);
   const [errorRequest, setErrorReguest] = useState();
   const [showItemsEnd, setShowItemsEnd] = useState(12);
-  const [up, setUp] = useState(false);
+  // const [up, setUp] = useState(false);
 
   const handleSearch = (search, region) => {
     let data = [...countries];
@@ -50,26 +50,26 @@ export const Home = ({ countries, setCountries }) => {
     setShowItemsEnd((prev) => prev + 12);
   };
 
-  const goUp = () => {
-    window.scrollTo(0, 0);
-    setUp(false);
-  };
+  // const goUp = () => {
+  //   window.scrollTo(0, 0);
+  //   setUp(false);
+  // };
 
-  const handleScroll = () => {
-    if (window.pageYOffset > 1000) {
-      setUp(true);
-    } else {
-      setUp(false);
-    }
-  };
+  // const handleScroll = () => {
+  //   if (window.pageYOffset > 1000) {
+  //     setUp(true);
+  //   } else {
+  //     setUp(false);
+  //   }
+  // };
 
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
+  // useEffect(() => {
+  //   window.addEventListener('scroll', handleScroll);
 
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener('scroll', handleScroll);
+  //   };
+  // }, []);
 
   if (errorRequest) {
     throw new Error(errorRequest);
@@ -110,12 +110,11 @@ export const Home = ({ countries, setCountries }) => {
         {' '}
         Show more
       </Button>
-      {up && (
-        // {/* {showItemsEnd > 12 && ( */}
-        <JumpUp onClick={goUp}>
-          <IoArrowUp />
-        </JumpUp>
-      )}
+      {/* {up && ( */}
+      {/* {showItemsEnd > 12 && ( */}
+      {/* // <JumpUp onClick={goUp}> */}
+      <JumpUp />
+      {/* )} */}
     </>
   );
 };
