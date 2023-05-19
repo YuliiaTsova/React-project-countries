@@ -6,9 +6,8 @@ import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  // <React.StrictMode>
   <BrowserRouter>
+    {/* <BrowserRouter basename="/React-project-countries"> */}
     <App />
   </BrowserRouter>
-  //</React.StrictMode>
 );

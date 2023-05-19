@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import axios from 'axios';
 import { ALL_COUNTRIES } from '../API/config';
@@ -8,13 +8,11 @@ import { List } from '../components/List';
 import { Card } from '../components/Card.jsx';
 import { Button } from '../components/Button';
 import { JumpUp } from '../components/JumpUp';
-import { IoArrowUp } from 'react-icons/io5';
 
 export const Home = ({ countries, setCountries }) => {
   const [filteredCountries, setFilteredCountries] = useState(countries);
   const [errorRequest, setErrorReguest] = useState();
   const [showItemsEnd, setShowItemsEnd] = useState(12);
-  // const [up, setUp] = useState(false);
 
   const handleSearch = (search, region) => {
     let data = [...countries];
@@ -49,27 +47,6 @@ export const Home = ({ countries, setCountries }) => {
   const handleShowMore = () => {
     setShowItemsEnd((prev) => prev + 12);
   };
-
-  // const goUp = () => {
-  //   window.scrollTo(0, 0);
-  //   setUp(false);
-  // };
-
-  // const handleScroll = () => {
-  //   if (window.pageYOffset > 1000) {
-  //     setUp(true);
-  //   } else {
-  //     setUp(false);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   window.addEventListener('scroll', handleScroll);
-
-  //   return () => {
-  //     window.removeEventListener('scroll', handleScroll);
-  //   };
-  // }, []);
 
   if (errorRequest) {
     throw new Error(errorRequest);
@@ -110,11 +87,7 @@ export const Home = ({ countries, setCountries }) => {
         {' '}
         Show more
       </Button>
-      {/* {up && ( */}
-      {/* {showItemsEnd > 12 && ( */}
-      {/* // <JumpUp onClick={goUp}> */}
       <JumpUp />
-      {/* )} */}
     </>
   );
 };

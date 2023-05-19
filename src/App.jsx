@@ -15,7 +15,6 @@ function App() {
   return (
     <>
       <Header></Header>
-      {console.log('render app')}
       <Main>
         <Routes>
           <Route

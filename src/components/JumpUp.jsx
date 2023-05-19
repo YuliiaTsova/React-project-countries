@@ -4,14 +4,15 @@ import { IoArrowUp } from 'react-icons/io5';
 
 const JumpUpBlock = styled.div`
   position: fixed;
-  right: 90px;
+  right: 1%;
   bottom: 70px;
-  width: 40px;
-  height: 40px;
-  background-color: #95b2e1;
+  width: 60px;
+  height: 60px;
+  background-color: RGBA(255, 0, 0, 0.6);
   border-radius: 50%;
+  color: #ffffff;
   text-align: center;
-  line-height: 40px;
+  line-height: 90px;
   cursor: pointer;
 `;
 
@@ -44,7 +45,7 @@ export const JumpUp = () => {
   return (
     <JumpUpBlock onClick={goUp}>
       {' '}
-      <IoArrowUp />{' '}
+      <IoArrowUp size={40} />
     </JumpUpBlock>
   );
 };
