@@ -10,6 +10,7 @@ export const Details = () => {
   const [country, setCountry] = useState(null);
   const [errorRequest, setErrorReguest] = useState();
   const { name } = useParams();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     axios
@@ -20,7 +21,8 @@ export const Details = () => {
       .catch((er) => {
         console.log('errrr', er.message);
         setErrorReguest(er.message);
-      });
+      })
+      .finally(() => setIsLoading(false));
   }, [name]);
 
   if (errorRequest) {
@@ -34,7 +36,11 @@ export const Details = () => {
       <Button onClick={back}>
         <IoArrowBack /> Back
       </Button>
-      {country && <InfoDetail {...country}></InfoDetail>}
+      {isLoading ? (
+        <p>Loading......</p>
+      ) : (
+        country && <InfoDetail {...country}></InfoDetail>
+      )}
     </div>
   );
 };
